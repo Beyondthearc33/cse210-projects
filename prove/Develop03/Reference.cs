@@ -41,7 +41,7 @@ public class Reference
         }
     }
 
-    public void Display()// temp method
+    public void Display()
     {
         foreach (Word word in _words)
         {
