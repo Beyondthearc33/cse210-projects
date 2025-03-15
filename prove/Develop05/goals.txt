@@ -1,0 +1,6 @@
+Luke
+SimpleGoal,Temple,Attend,True,200
+EternalGoal,Happy,Be Happy,0,10
+CheckListGoal,Work,Work Everyday,5,5,10,100
+EternalGoal,temple,attend,0,10
+EternalGoal,Party,Everyday,0,10

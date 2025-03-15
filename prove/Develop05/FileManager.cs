@@ -2,30 +2,48 @@ using System.Runtime.CompilerServices;
 
 public class FileManager
 {
-    public void AddGoal(Goal goal)
+    public static void saveUserGoals(List<Goal> goals, string fileName, string userName)
     {
-        //Goals.Add(goal)
+        using (StreamWriter writer = new StreamWriter(fileName))
+        {
+            writer.WriteLine(userName);
+            foreach (Goal goal in goals)
+            {
+                writer.WriteLine(goal.fileString());
+            }
+        }
     }
-
-    public static void saveUserGoals(User user, string fileName)
-    {
-
-    }
-
     public static void loadUserGoals(User user, string fileName)
     {
-        string filename = "myFile.txt";
-        string[] lines = System.IO.File.ReadAllLines(filename);
-
+        user._userName = "New User";
+        user.goals.Clear();
+        string[] lines = System.IO.File.ReadAllLines(fileName);
+        user._userName = lines[0];
         foreach (string line in lines)
         {
             string[] parts = line.Split(",");
 
-            string firstName = parts[0];
-            string lastName = parts[1];
+            string goalType = parts[0];
+            switch (goalType)
+            {
+                case "SimpleGoal":
+                    SimpleGoal simpleGoal = new SimpleGoal();
+                    simpleGoal.parseFileString(parts);
+                    user.goals.Add(simpleGoal);
+                    break;
+                case "EternalGoal":
+                    EternalGoal eternalGoal = new EternalGoal();
+                    eternalGoal.parseFileString(parts);
+                    user.goals.Add(eternalGoal);
+                    break;
+                case "CheckListGoal":
+                    CheckListGoal checkListGoal = new CheckListGoal();
+                    checkListGoal.parseFileString(parts);
+                    user.goals.Add(checkListGoal);
+                    break;
+                default:
+                    break;
+            }
         }
     }
-
-
-
 }

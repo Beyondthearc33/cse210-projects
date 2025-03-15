@@ -2,8 +2,8 @@ using System.Security.Cryptography.X509Certificates;
 
 public class SimpleGoal : Goal
 {
-    private bool _isComplete; 
-    public SimpleGoal() :base() //Constructor
+    private bool _isComplete;
+    public SimpleGoal() : base() //Constructor
     {
         _isComplete = false;
     }
@@ -13,7 +13,7 @@ public class SimpleGoal : Goal
         _description = description;
         _points = points;
     }
-    public SimpleGoal(string name, string description, int points, bool isComplete) : base(name, description,  points)
+    public SimpleGoal(string name, string description, int points, bool isComplete) : base(name, description, points)
     {
         _name = name;
         _description = description;
@@ -22,37 +22,38 @@ public class SimpleGoal : Goal
     }
     public override void initializeFromConsole()
     {
-        Console.WriteLine("What is the name of your goal?");
+        Console.Write("What is the name of your goal? ");
         _name = Console.ReadLine();
-        Console.WriteLine("What is a short description of it?");
+        Console.Write("What is a short description of it? ");
         _description = Console.ReadLine();
-        Console.WriteLine("What is the amount of points associated with this goal?");
+        Console.Write("What is the amount of points associated with this goal? ");
         _points = int.Parse(Console.ReadLine());
     }
-
-   public override string displayGoal()
+    public override string displayGoal()
     {
-       return $"{(_isComplete ? "[x]" : "[ ]")} {_name} ({_description})";
-        // if(_isComplete)
-        // {
-        //     return $"[x] {_name} ({_description})";
-        // } else
-        // {
-        // return $"[] {_name} ({_description})";
-        // }
+        return $"{(_isComplete ? "[x]" : "[ ]")} {_name} ({_description})";
     }
-
     public override void updateProgress()
     {
         _isComplete = true;
     }
     public override int getAchievedPoints()
     {
-        if(_isComplete)
+        if (_isComplete)
         {
-        return _points;
+            return _points;
         }
         return 0;
     }
-
+    public override string fileString()
+    {
+        return $"SimpleGoal,{_name},{_description},{_isComplete},{_points}";
+    }
+    public override void parseFileString(string[] fileLine)
+    {
+        _name = fileLine[1];
+        _description = fileLine[2];
+        _isComplete = bool.Parse(fileLine[3]);
+        _points = int.Parse(fileLine[4]);
+    }
 }
