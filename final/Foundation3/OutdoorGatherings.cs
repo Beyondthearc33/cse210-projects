@@ -7,10 +7,11 @@ public class OutdoorGathering : Event
     }
     public override void fullDetailMessage()
     {
-        throw new NotImplementedException();    
+        Console.WriteLine($"Outdoor Gathering\nThe weather Forcast is {_weatherForcast}");  
+        standardDetailMessage();
     }
     public override void shortDescription()
     {
-        throw new NotImplementedException();
+        Console.WriteLine($"Outdoor Gathering Event\n{_eventTitle}\n{_eventDate}");
     }
 }

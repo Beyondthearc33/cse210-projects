@@ -7,10 +7,11 @@ public class Receptions : Event
     }
     public override void fullDetailMessage()
     {
-        throw new NotImplementedException();    
+        Console.WriteLine($"Reception\nRSVP @ {_rsvpEmail}");  
+        standardDetailMessage();
     }
     public override void shortDescription()
     {
-        throw new NotImplementedException();
+        Console.WriteLine($"Reception Event\n{_eventTitle}\n{_eventDate}");
     }
 }

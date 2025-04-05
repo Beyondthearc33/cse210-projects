@@ -11,5 +11,14 @@ class Program
         events.Add(new Receptions("Wedding of Ryan & Janet", "Wedding", "July 20, 2025", "6:00PM", new Address("1422 East Parrot Dr", "Draper", "Utah", "USA"), "rsvp@OlympicEvent.com"));
 
         events.Add(new OutdoorGathering("Adams Reunion", "Adams Family Reunion", "July 4, 2025", "11:00 AM", new Address("1344 West Kremlin Street", "Cordova", "Maine", "USA"), "Cloudy"));
+
+        foreach(Event e in events)
+        {
+            e.standardDetailMessage();
+            Console.WriteLine();
+            e.fullDetailMessage();
+            Console.WriteLine();
+            e.shortDescription();
+        }
     }
 }

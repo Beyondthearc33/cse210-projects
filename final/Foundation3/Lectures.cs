@@ -9,10 +9,11 @@ public class Lectures : Event
     }
     public override void fullDetailMessage()
     {
-        throw new NotImplementedException();    
+        Console.WriteLine($"Lectures\nGuest Speaker: {_speaker}\n Event Capacity is {_capacity}");  
+        standardDetailMessage();    
     }
     public override void shortDescription()
     {
-        throw new NotImplementedException();
+        Console.WriteLine($"Lecture Event\n{_eventTitle}\n{_eventDate}");
     }
 }

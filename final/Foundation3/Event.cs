@@ -22,5 +22,4 @@ public abstract class Event
     }
     public abstract void fullDetailMessage();
     public abstract void shortDescription();
-
 }
